@@ -40,4 +40,4 @@ Place the map in User/SavedLevels
 Place the scheme in User/Schemes
 
 
-api-ms-win-core-synch-l1-2-0.dll and brcryptprimitives.dll are extra Wine dependencies to ensure the module works in ios/Linux, place in WA installation folder next to WA.exe
+api-ms-win-core-synch-l1-2-0.dll and brcryptprimitives.dll are extra Wine dependencies to ensure the module works in ios/Linux, place in WA installation folder next to WA.exe if you're using Wine
