@@ -1,7 +1,6 @@
 # wkGolf — exported from wkgolf editor project
 map = "golf_map.png"
 hud = true
-wind_scale = 0.10
 
 [[holes]]
 origin_x = 0
