@@ -1,10 +1,5 @@
 wKGolf.dll is a Wormkit module that allows players to play Golf inside of WA
 
-
-
--- BETA: WORMNET TESTING PENDING --
-
-
 wkGolf comes with a .png map (golf course), a golf.toml that dictates game and map configuration (tee spawn, hole, par etc) and a WA scheme file.
 
 The scheme includes important features: full phasing of worms, damage and proyectiles and anti-lock power to make full power challenging and a game of skill.
@@ -43,3 +38,6 @@ Place wkGolf.dll and golf.toml in WA's installation folder next to WA.exe
 Place the map in User/SavedLevels
 
 Place the scheme in User/Schemes
+
+
+api-ms-win-core-synch-l1-2-0.dll and brcryptprimitives.dll are extra Wine dependencies to ensure the module works in ios/Linux, place in WA installation folder next to WA.exe
