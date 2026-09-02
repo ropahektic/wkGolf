@@ -1,0 +1,54 @@
+# wkGolf — exported from wkgolf editor project
+map = "golf_map.png"
+hud = true
+wind_scale = 0.10
+
+[[holes]]
+origin_x = 0
+origin_y = 0
+tee_x = 88.0
+tee_y = 334.0
+cup_x = 1000.5
+cup_y = 390.4
+radius = 22
+par = 3
+
+[[holes]]
+origin_x = 0
+origin_y = 0
+tee_x = 2224.0
+tee_y = 338.0
+cup_x = 3661.5
+cup_y = 244.4
+radius = 22
+par = 3
+
+[[holes]]
+origin_x = 0
+origin_y = 0
+tee_x = 4386.0
+tee_y = 308.0
+cup_x = 7141.5
+cup_y = 350.4
+radius = 22
+par = 3
+
+[[holes]]
+origin_x = 0
+origin_y = 0
+tee_x = 8010.0
+tee_y = 335.0
+cup_x = 11246.5
+cup_y = 397.4
+radius = 22
+par = 3
+
+[[holes]]
+origin_x = 0
+origin_y = 0
+tee_x = 11759.0
+tee_y = 430.0
+cup_x = 13268.5
+cup_y = 47.4
+radius = 22
+par = 3
