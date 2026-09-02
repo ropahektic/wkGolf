@@ -10,7 +10,7 @@ Done:
 
 Realistic Golf wind - fully revamped wind to affect grenades in a realistic way
 
-Spin ball physics - Add Left or Right spin to your ball bounces (J for left spin, K for no spin, L for right spin) Each spin direction has three strengths, +,++ and +++. Spin is influenced by power and ball momentum.
+Spin ball physics - Add Left or Right spin to your ball bounces (Enter and Backspace to scroll through Spin modes) Each spin direction has three strengths, +,++ and +++. Spin is influenced by power and ball momentum.
 
 Full power landing marker - an arrow shows the theoretical landing of your ball at full power in real time without accounting for wind
 
