@@ -41,3 +41,22 @@ Place the scheme in User/Schemes
 
 
 api-ms-win-core-synch-l1-2-0.dll and brcryptprimitives.dll are extra Wine dependencies to ensure the module works in ios/Linux, place in WA installation folder next to WA.exe if you're using Wine
+
+## Source
+
+The module is Rust (`src/`, a WormKit `cdylib`; stock WA physics only, see `docs/DESIGN.txt`).
+
+```
+cargo build --release --target i686-pc-windows-msvc
+```
+
+The DLL in the release is `target/i686-pc-windows-msvc/release/wkGolf.dll`. The two small DLLs
+shipped beside it (`api-ms-win-core-synch-l1-2-0.dll`, `bcryptprimitives.dll`) are stubs for
+running under Wine; their sources are in `wine_stubs/`.
+
+- `editor/`: the browser map editor (open `editor/index.html`, or `scripts/serve-editor.sh`).
+  It exports a course as a PNG plus the `[[holes]]` of `golf.toml`.
+- `scripts/`: the course pipeline (`prepare_golf_map.py`, `fill_grass_project.py`,
+  `make_golf_map.py`, `fix_wa_png.py`) and `pack_release.py`.
+
+License: MIT.

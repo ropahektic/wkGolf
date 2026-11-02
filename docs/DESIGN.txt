@@ -1,0 +1,70 @@
+wkGolf — mini-golf inside Worms Armageddon
+==========================================
+
+Grenade = golf ball. Stock WA physics; **no fuse timer** — the ball detonates
+1 second after it comes fully to rest on terrain (rolling/airborne resets the timer).
+
+Loop per worm:
+  1. Session start — all worms drop at hole 1 tee.
+  2. On turn handoff — drop worm in air above tee/ball spot (gravity lands them).
+  3. Shoot grenade — **J** cycles left spin tiers (+/++/+++), **L** right tiers, **K** clears.
+  Spin kicks on every floor bounce: 1st=100%, 2nd=50%, 3rd=25%, 4th+=none.
+  Strength also scales with launch power (50% throw → 50% spin).
+     Rests 1s idle → stock detonation.
+  4. On next handoff — drop worm above saved ball spot, then shoot again.
+  5. Hole-in (det within cup radius) — on the *next* handoff, worm advances to next hole tee.
+  6. HUD: top-left HOLE/PAR; top-right player name, shot (1ST/2ND/…), vs-par status.
+
+Scheme requirements:
+  - Grenades available (F-row or scheme default).
+  - **Rounds unlimited / very high** — stock 1-round ends after each worm fires once.
+
+Install (WormKit)
+-----------------
+1. Copy wkGolf.dll, golf.toml, and GolfTest1.png next to WA.exe (or OpenWA runtime).
+2. Host a local game: 1–8 teams, 1 worm each, load course map.
+3. Load map **GolfTest1.png** from User/SavedLevels in the host lobby.
+4. Play — read wkGolf.log beside the DLL for scores.
+
+Tailscale zip (after pack_release.py; server on PVE port 8777)
+http://100.70.204.87:8777/wkGolf.zip
+# fresh IP: tailscale ip -4  →  http://<that-ip>:8777/wkGolf.zip
+
+Map author color key
+--------------------
+Each hole lives inside a **red rectangle** on the PNG (cells are not equal size).
+
+  Red   (136, 0, 21)   — cell border
+  Yellow (235, 210, 55) — tee / spawn pad
+  Blue  (0, 162, 232)  — cup marker (stripped from shipped PNG)
+  Green / brown        — terrain
+  Orange               — lava (future; ignored for now)
+  Black                — air
+
+Course file (golf.toml)
+-----------------------
+map = "GolfTest1.png"
+
+Six holes on rows 1–2 of a 3×3 sheet (row 3 empty / TBD). Coords are local to each
+cell's top-left inside its red box. `prepare_golf_map.py` reads yellow + blue markers
+and writes origin/tee/cup automatically.
+
+Pars: 1→2, 2→2, 3→2, 4→4, 5→3, 6→3
+
+On-screen HUD
+-------------
+Top-left: HOLE n / PAR n (viewport-fixed, does not scroll).
+Top-right: player name, 1ST/2ND SHOT, vs-par status.
+Center: PAR! / BIRDIE! / etc for ~5s when a hole is completed.
+
+Set `hud = false` in golf.toml to disable the render hook.
+
+Build (PVE)
+-----------
+cd /root/WA.Engine/tmp-wkGolf
+# drop author PNG at incoming/GolfTest1_raw.png, then:
+python3 scripts/prepare_golf_map.py
+CARGO_TARGET_DIR=target cargo build --release --target i686-pc-windows-gnu
+python3 scripts/pack_release.py
+
+Not live Blas / wkAimbot — separate WormKit module.

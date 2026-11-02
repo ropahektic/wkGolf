@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Golf Map Editor · Ropers Heaven</title>
+  <link rel="stylesheet" href="css/editor.css" />
+</head>
+<body>
+  <div id="app">
+    <aside>
+      <h1><a href="/" class="rh-link">Ropers Heaven</a> · wkGolf</h1>
+      <div id="palette-wrap">
+        <div id="palette-fairway"></div>
+        <div id="palette-extra-label">Extras</div>
+        <div id="palette-extra"></div>
+      </div>
+      <p class="hint">Tile 0 (top-left) = empty. Click a tile, then click the map.</p>
+      <div class="toolbar">
+        <div class="row mode-row">
+          <label>Tool</label>
+          <button type="button" id="btn-mode-tiles" class="active">Tiles</button>
+          <button type="button" id="btn-mode-tee">Tee</button>
+        </div>
+        <div class="row">
+          <label>Tileset</label>
+          <input type="file" id="tileset-file" accept="image/png,image/webp" />
+        </div>
+        <div class="row">
+          <label>Columns</label>
+          <button type="button" id="btn-del-col">−</button>
+          <input type="number" id="inp-cols" value="64" min="1" step="1" title="Map columns — auto-grows when you build rightward" />
+          <button type="button" id="btn-add-col">+1</button>
+          <button type="button" id="btn-add-col-10">+10</button>
+        </div>
+        <div class="row">
+          <label>Height</label>
+          <button type="button" id="btn-shorter">−8</button>
+          <input type="number" id="inp-height" value="512" min="64" step="8" readonly />
+          <button type="button" id="btn-taller">+8</button>
+        </div>
+        <div class="row row-stack">
+          <button type="button" id="btn-fill-grass" class="warning" title="Run only after the map layout is finished">
+            ⚠ Fill grass gaps
+          </button>
+          <p class="warn-hint">Use when the map is done — fills enclosed air pockets with grass.</p>
+        </div>
+        <div class="row">
+          <button type="button" id="btn-clear">Clear map</button>
+        </div>
+        <div class="row">
+          <button type="button" class="primary" id="btn-save-png">Save WA PNG</button>
+        </div>
+        <div class="row">
+          <label>Par</label>
+          <input type="number" id="inp-par" value="3" min="1" max="9" />
+          <button type="button" id="btn-save-toml">Save golf.toml</button>
+        </div>
+        <div class="row">
+          <button type="button" id="btn-save-project">Save project</button>
+          <label><input type="file" id="btn-load-project" accept=".json" hidden /><span class="btn">Load</span></label>
+        </div>
+      </div>
+    </aside>
+    <main>
+      <div id="topbar">
+        <strong>Map editor</strong>
+        <span class="hint">Click column to place (fixed bottom row) · drag tile to move vertically</span>
+        <span id="status">Loading…</span>
+      </div>
+      <div id="scroll">
+        <div id="canvas-wrap">
+          <canvas id="map-canvas" width="1920" height="512"></canvas>
+          <canvas id="guides"></canvas>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script type="module" src="js/editor.js?v=8"></script>
+</body>
+</html>
